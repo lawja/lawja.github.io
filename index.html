@@ -1,256 +1,182 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lawja - jake lawrence</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Courier New", Courier, monospace;
+        line-height: 1.4;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-<head>
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-</head>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
 
-<body>
-  <div class="row">
-    <div class="left-pane col-md-3">
-      <div class="pane-header">
-        <img class="hs" src="img/head.jpg"> Jake Lawrence
-      </div>
-      <div class="pane-header-contact">
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      /* Image placeholder box */
+      .img-box {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        background: #fafafa;
+      }
+
+      /* If you swap in an actual <img>, make it behave nicely */
+      .img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        color: #7db4ff;
+      }
+
+      .name-underline {
+        color: #7db4ff;
+      }
+
+      .hacker-green {
+        color: #7db4ff;
+      }
+
+
+      .accent-yellow {
+        color: #f0cc00;
+        font-weight: 700;
+      }
+      h2 {
+        margin: 0 0 16px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #777;
+      }
+
+      .info {
+        margin: 0;
+      }
+
+      .info-section {
+        margin: 0 0 12px;
+      }
+
+      .info-title {
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .info a {
+        color: #7db4ff;
+      }
+
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .img-box {
+          aspect-ratio: 16 / 9;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="grid">
+        <!-- LEFT COLUMN: image placeholder -->
+        <div class="img-box">
+          <img src="pfp.jpg" alt="jake's face" />
+        </div>
+
+        <!-- RIGHT COLUMN: header + bullets -->
         <div>
-          jake
-          <span class="bi">[dot]</span>
-          lawrence
-          <span class="bi">[at]</span>
-          temple
-          <span class="bi">[dot]</span>
-          edu
-        </div>
-      </div>
-      <div class="pane-break"></div>
-      <div class="pane-entry-list">
-        <div class="pane-entry">
-          <span class="entry-wrapper">
-            <a href="https://github.com/lawja" target="_blank">
-              <i class="fas fa-code"></i> Github
-            </a>
-          </span>
-          <div class="ul-block"></div>
-        </div>
-
-        <div class="pane-entry">
-          <span class="entry-wrapper">
-            <a href="./files/resume.pdf">
-              <i class="far fa-file"></i> Résumé
-            </a>
-          </span>
-          <div class="ul-block"></div>
-        </div>
-
-      </div>
-      <div class="pane-break"></div>
-      <div class="pane-entry-list">
-        <div class="pane-entry">
-          <span class="entry-wrapper">
-            <a href="/quicklinks">
-              <i class="fas fa-link"></i> Quick Links
-            </a>
-          </span>
-          <div class="ul-block" style="background-color: #61dafb"></div>
-        </div>
-
-        <div class="pane-entry">
-          <span class="entry-wrapper">
-            <a href="https://www.tudev.org" target="_blank">
-              <i class="fas fa-terminal"></i> TUDev
-            </a>
-          </span>
-          <div class="ul-block" style="background-color: #A41E35"></div>
+          <h1 id="site-name">
+            <span class="name-underline hover-name">ja</span>ke
+            <span class="name-underline hover-name">law</span>rence
+          </h1>
+          <h2>production engineer at Meta</h2>
+          <div class="info">
+            <div class="info-section">
+              <div class="info-title">work</div>
+              <div>
+                - currently a production engineer at meta on edge platform, working on meta's CDN and edge compute
+              </div>
+              <div>- trying my best to keep meta's traffic still served</div>
+              <div>- failing occassionally, surviving otherwise</div>
+            </div>
+            <div class="info-section">
+              <div class="info-title">personal</div>
+              <div>- currently in nyc</div>
+              <div>- <strong>a fan of:</strong></div>
+              <div>&nbsp;&nbsp;- formula 1</div>
+              <div>&nbsp;&nbsp;- music</div>
+              <div>&nbsp;&nbsp;- TODO lists</div>
+              <div>&nbsp;&nbsp;- coding</div>
+              <div>&nbsp;&nbsp;- <span class="accent-yellow">the color yellow</span></div>
+            </div>
+            <div class="info-section">
+              <div class="info-title">contact</div>
+              <div>
+                -
+                <a href="mailto:jake.lawrence24@gmail.com" target="_blank" rel="noopener">
+                  jake.lawrence24@gmail.com
+                </a>
+              </div>
+              <div>
+                -
+                <a href="https://www.linkedin.com/in/c-lawrence/" target="_blank" rel="noopener">
+                  linkedin
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </body>
+  <script>
+    const nameHeading = document.getElementById("site-name");
+    const originalNameHtml = nameHeading.innerHTML;
 
-    <div class="col-md-9 right-pane">
-      <h2>About Me</h2>
-      <div>
-        I am a Senior at
-        <a href="https://temple.edu" target="_blank">Temple University</a>
-        studying
-        <a href="https://bulletin.temple.edu/undergraduate/science-technology/computer-information-science/computer-science-bs/"
-          target="_blank">Computer Science</a>.
-        Currently I am the Co-President of
-        <a href="https://tudev.org" target="_blank">TUDev</a>,
-        Temple's CS / Hacker club. I am the former President of TUSec,
-        Temple's InfoSec club, which has now merged into TUDev. I am the co-founder
-        of
-        <a href="https://hack4impact.org/" target="_blank">Hack4Impact</a>
-        Temple, which is an organization that develops software for nonprofits.
-        <br>
-        <br>
-        From May 2017 to November 2018, I developed penetration testing utilities for
-        <a href="https://tbgsecurity.com" target="_blank">TBG Security</a>.
-        This coming summer I will be a Software Engineering Intern for
-        <a href="https://www.jpmorganchase.com/" target="_blank">JPMorgan Chase &amp; Co.</a>
-        (what I will be working will be deterimined shortly). I currently maintain and update
-        <a href="https://tudev.org" target="_blank">TUDev.org</a>.
-        <br>
-        <br>
-        During the 2019 Spring semester, I will be working on the web development team for
-        <a href="https://traffickcam.com/" target="_blank">TraffickCam</a>
-        under the supervision of
-        <a href="https://cis.temple.edu/~souvenir/" target="_blank">Professor Richard Souvenir</a>.
-        You can read more about TraffickCam
-        <a href="https://traffickcam.com/about" target="_blank">here</a>
-        and
-        <a href="https://www.cnn.com/2017/02/09/tech/traffickcam-sex-trafficking/index.html" target="_blank">here</a>.
-        <br>
-        <br>
-        During the Spring months of 2018, I was a coordinator for
-        <a href="https://tudev.org/lhd" target="_blank">Local Hack Day Philly</a>,
-        a hackathon at Temple. Also, I was the sole developer for
-        <a href="https://hackpack.tudev.org" target="_blank">hackpack.tudev.org</a>,
-        a hardware checkout platform for Temple students.
-        <br>
-        <br>
-        Feel free to reach out to me if you'd like to talk about anything I've worked on
-        or anything of interest to you!
-      </div>
-      <br>
+    const showHackerName = () => {
+      nameHeading.textContent = "lawja";
+      nameHeading.classList.add("hacker-green");
+    };
 
-      <h2>Projects I've Worked On</h2>
-      <div class="project-entry">
-        <div class="project-tags">
-          <span class="fs">Fullstack</span>
-          <span class="web">Web</span>
-          <span class="python">Python</span>
-          <span class="mongo">MongoDB</span>
-        </div>
-        <div class="project-title">
-          <a href="https://hackpack.tudev.org" target="_blank">HackPack</a>
-        </div>
-        <div class="project-desc">
-          <a href="https://hackpack.tudev.org" target="_blank">
-            <img src="./img/hackpack.jpg" class="project-thumbnail">
-          </a>
-          HackPack is a web app designed for TUDev members to check out and use hardware for
-          their personal software projects. The inspiration for HackPack stems from the fact
-          that many students wish to engage in software development alongside hardware but
-          they are not able to or do not wish to buy expensive hardware to learn these skills.
-          Currently, HackPack can be found in production at
-          <a href="https://hackpack.tudev.org" target="_blank">hackpack.tudev.org</a>
-          and its source code is viewable at
-          <a href="https://www.github.com/tudev/hackpack" target="_blank">github.com/tudev/hackpack</a>.
-          HackPack was built with Python alongside
-          <a href="http://flask.pocoo.org/" target="_blank">Flask</a>
-          for the backend,
-          <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>
-          as the database layer, and various frontend technologies (HTML, CSS,
-          JS, Bootstrap Grid).
-        </div>
-      </div>
+    const restoreName = () => {
+      nameHeading.innerHTML = originalNameHtml;
+      nameHeading.classList.remove("hacker-green");
+      bindHoverTargets();
+    };
 
-      <div class="project-entry">
-        <div class="project-tags">
-          <span class="fs">Fullstack</span>
-          <span class="web">Web</span>
-          <span class="python">Python</span>
-          <span class="mongo">MongoDB</span>
-        </div>
-        <div class="project-title">TBG Security SMP (Stinger Management Platform)</div>
-        <div class="project-desc">
-          <img src="./img/tbg_smp.jpg" class="project-thumbnail">
-          The Stinger Management Platform, SMP for short, is a full stack web app and client
-          script that enables the use of a suite of auditing modules for the penetration
-          testing and auditing of a network of client machines. The web app allows users
-          to manage machines on internal or external networks, run tests on these machines
-          through pre-written modules, and view reports on the results of these modules.
-          These modules are executed through a custom C2 script that is run on client machines
-          and they were based on the
-          <a href="#">MITRE ATT&amp;K Matrix</a>.
-          The web app was built with Python alongside
-          <a href="http://flask.pocoo.org/" target="_blank">Flask</a>
-          for the backend,
-          <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>
-          as the DB layer, and various frontend technologies (HTML, CSS, JS, Bootstrap grid).
-          The C2 script was written in Python. I developed this product whilst working as a
-          Software Engineering Intern at the great company
-          <a href="https://www.tbgsecurity.com" target="_blank">TBG Security</a>.
-        </div>
-      </div>
+    const bindHoverTargets = () => {
+      const hoverTargets = nameHeading.querySelectorAll(".hover-name");
+      hoverTargets.forEach((target) => {
+        target.addEventListener("mouseenter", showHackerName);
+      });
+    };
 
-      <div class="project-entry">
-        <div class="project-tags">
-          <span class="event">Event</span>
-        </div>
-        <div class="project-title">
-          <a href="https://tudev.org/lhd" target="_blank">Local Hack Day Philly</a>
-        </div>
-        <div class="project-desc">
-          <a href="https://tudev.org/lhd" target="_blank">
-            <img src="./img/lhd.jpg" class="project-thumbnail">
-          </a>
-          <a href="https://tudev.org/lhd" target="_blank">Local Hack Day Philly</a>
-          was a one-day hackathon organized by
-          <a href="https://tudev.org" target="_blank">TUDev</a>
-          at
-          <a href="https://temple.edu" target="_blank">Temple University</a>
-          where over 100 college students from the Greater Philadelphia area
-          came together to build awesome software. As a coordinator I worked on ensuring a
-          successful event through various responsibilities that would frankly be too boring
-          for most people to list.
-        </div>
-      </div>
-
-      <div class="project-entry">
-        <div class="project-tags">
-          <span class="fs">Fullstack</span>
-          <span class="web">Web</span>
-          <span class="python">Python</span>
-        </div>
-        <div class="project-title">
-          <a href="https://devpost.com/software/scripttube">ScriptTube</a>
-        </div>
-        <div class="project-desc">
-          <a href="https://devpost.com/software/scripttube">
-            <img src="./img/st.jpg" class="project-thumbnail">
-          </a>
-          ScriptTube was a project that myself and a team of three others developed at
-          <a href="https://hackny.org/hackathon/">HackNY</a>
-          Spring 2017. The goal of the project was to allow people to generate annotated,
-          shortened summaries of YouTube videos. What I mean by annotated is that in the
-          summaries provided, links to the time in the video were provided. This means that if
-          the summary of a video on rubber ducks was generated and in the summary there was a
-          sentence talking about the inventor of the rubber duck, a link would be provided alongside
-          this sentence which when clicked upon would bring the user to the time in the video
-          that was talking about the inventor of the rubber duck. ScriptTube won Greatest Time
-          Saver at HackNY Spring 2017. It was built with Python alongside
-          <a href="http://flask.pocoo.org/">Flask</a>
-          for the backend, and various web technologies for the frontend
-          (HTML, CSS, JS, Bootstrap grid).
-        </div>
-      </div>
-      <div class="project-entry">
-        <div class="project-tags">
-          <span class="web">Web</span>
-        </div>
-        <div class="project-title">tusec.org</div>
-        <div class="project-desc">
-          <img src="./img/tusec.jpg" class="project-thumbnail">
-          TUSec was in need of a website and I wanted to practice some of my newly learned
-          web development skills so I volunteered to create this website for them. The site
-          was made with various frontend technologies (HTML, CSS, Bootstrap). It is no longer
-          in production due to the fact that TUSec was merged into TUDev but I have taken the liberty
-          of hosting an archived version of the site
-          <a href="/TUSec/">here</a>.
-        </div>
-      </div>
-      <br>
-    </div>
-</body>
-<footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/main.js"></script>
-</footer>
-
+    bindHoverTargets();
+    nameHeading.addEventListener("mouseleave", restoreName);
+  </script>
 </html>
