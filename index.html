@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lawja - jake lawrence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       html,
       body {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        overscroll-behavior: none;
-      }
-
-      body {
         margin: 0;
-        font-family: "Courier New", Courier, monospace;
+        font-family: "Lora", serif;
         line-height: 1.4;
-        min-height: 100vh;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
       }
 
       .wrap {
@@ -40,6 +40,9 @@
       .img-box {
         width: 100%;
         aspect-ratio: 1 / 1;
+        margin-right: 38px;
+        border-radius: 18px;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -98,12 +101,104 @@
         color: #7db4ff;
       }
 
+      [class*="subway-icon"] {
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 0.74rem;
+        z-index: 5;
+        height: 1em;
+        width: 1em;
+        line-height: 1em;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #000;
+      }
+
+      [class*="subway-icon"]::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: calc(100% + 0.4em);
+        height: calc(100% + 0.4em);
+        left: -0.2em;
+        top: -0.2em;
+        border-radius: 50%;
+      }
+
+      .mta-blue::before {
+        background-color: #0a5786;
+      }
+
+      .mta-yellow::before {
+        background-color: #fccc0a;
+      }
+
+      .mta-gray::before {
+        background-color: #666666;
+      }
+
+      .mta-brown::before {
+        background-color: #573208;
+      }
+
+      .mta-blue,
+      .mta-gray,
+      .mta-brown {
+        color: #fff;
+      }
+
+      .mta-yellow {
+        color: #000;
+      }
+
+      .site-footer {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
+        font-size: 0.78rem;
+        color: #7d7d7d;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+      }
+
+      .site-footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-footer-link:hover {
+        color: #555;
+      }
+
+      .site-footer-logos {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .site-footer-logo {
+        font-size: 0.74rem;
+        margin: 0;
+      }
+
       @media (max-width: 700px) {
         .grid {
           grid-template-columns: 1fr;
         }
         .img-box {
           aspect-ratio: 16 / 9;
+          margin-right: 0;
         }
       }
     </style>
@@ -127,7 +222,7 @@
             <div class="info-section">
               <div class="info-title">work</div>
               <div>
-                - currently a production engineer at meta on edge platform, working on meta's CDN and edge compute
+                - working on meta's CDN and edge compute on edge platform
               </div>
               <div>- trying my best to keep meta's traffic still served</div>
               <div>- failing occassionally, surviving otherwise</div>
@@ -141,6 +236,15 @@
               <div>&nbsp;&nbsp;- TODO lists</div>
               <div>&nbsp;&nbsp;- coding</div>
               <div>&nbsp;&nbsp;- <span class="accent-yellow">the color yellow</span></div>
+            </div>
+            <div class="info-section">
+              <div class="info-title">projects</div>
+              <div>
+                -
+                <a href="https://subway.lawja.sh" target="_blank" rel="noopener">
+                  subway.lawja.sh
+                </a>
+              </div>
             </div>
             <div class="info-section">
               <div class="info-title">contact</div>
@@ -161,10 +265,25 @@
         </div>
       </div>
     </div>
+    <footer class="site-footer">
+      <a class="site-footer-link" href="https://lawja.sh" target="_blank" rel="noopener noreferrer">
+        <span class="site-footer-logos" aria-label="LAWJA logo">
+          <span class="subway-icon mta-gray site-footer-logo">L</span>
+          <span class="subway-icon mta-blue site-footer-logo">A</span>
+          <span class="subway-icon mta-yellow site-footer-logo">W</span>
+          <span class="subway-icon mta-brown site-footer-logo">J</span>
+          <span class="subway-icon mta-blue site-footer-logo">A</span>
+        </span>
+        <span>&bull; <span id="current-year"></span></span>
+      </a>
+    </footer>
   </body>
   <script>
+    const currentYear = document.getElementById("current-year");
     const nameHeading = document.getElementById("site-name");
     const originalNameHtml = nameHeading.innerHTML;
+
+    currentYear.textContent = new Date().getFullYear();
 
     const showHackerName = () => {
       nameHeading.textContent = "lawja";
