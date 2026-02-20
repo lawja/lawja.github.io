@@ -24,10 +24,23 @@
         overflow: hidden;
       }
 
+      body {
+        background: #ffffff;
+        transition: background-color 180ms ease;
+      }
+
+      #particles-js {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+      }
+
       .wrap {
         max-width: 1000px;
         margin: 0 auto;
         padding: 24px;
+        position: relative;
+        z-index: 1;
       }
 
       .grid {
@@ -57,6 +70,8 @@
         height: 100%;
         object-fit: cover;
         display: block;
+        -webkit-user-drag: none;
+        user-select: none;
       }
 
       h1 {
@@ -71,6 +86,23 @@
 
       .hacker-green {
         color: #7db4ff;
+      }
+
+      .lawja-mode {
+        background: #000000;
+      }
+
+      .lawja-mode #site-name.hacker-green {
+        color: #39ff14;
+      }
+
+      .lawja-mode h2,
+      .lawja-mode .info,
+      .lawja-mode .info-title,
+      .lawja-mode .info a,
+      .lawja-mode .site-footer,
+      .lawja-mode .site-footer-link {
+        color: #ffffff;
       }
 
 
@@ -168,6 +200,7 @@
         white-space: nowrap;
         display: flex;
         align-items: center;
+        z-index: 1;
       }
 
       .site-footer-link {
@@ -205,11 +238,12 @@
     </style>
   </head>
   <body>
+    <div id="particles-js" aria-hidden="true"></div>
     <div class="wrap">
       <div class="grid">
         <!-- LEFT COLUMN: image placeholder -->
         <div class="img-box">
-          <img src="pfp.jpg" alt="jake's face" />
+          <img id="profile-photo" src="pfp.jpg" alt="jake's face" draggable="false" />
         </div>
 
         <!-- RIGHT COLUMN: header + bullets -->
@@ -279,32 +313,111 @@
       </a>
     </footer>
   </body>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     const currentYear = document.getElementById("current-year");
     const nameHeading = document.getElementById("site-name");
+    const profilePhoto = document.getElementById("profile-photo");
     const originalNameHtml = nameHeading.innerHTML;
+    const originalPhotoSrc = profilePhoto.getAttribute("src");
+    const laserPhotoSrc = "pfp_laser.jpg";
+    const normalParticleColor = "#7db4ff";
+    const lawjaParticleColor = "#39ff14";
+    const normalParticleSettings = {
+      count: 65,
+      speed: 1.8,
+      size: 2.5,
+      opacity: 0.4,
+      lineOpacity: 0.25,
+      lineWidth: 1,
+    };
+    const lawjaParticleSettings = {
+      count: 110,
+      speed: 3.2,
+      size: 3.4,
+      opacity: 0.7,
+      lineOpacity: 0.5,
+      lineWidth: 1.4,
+    };
 
     currentYear.textContent = new Date().getFullYear();
 
     const showHackerName = () => {
       nameHeading.textContent = "lawja";
       nameHeading.classList.add("hacker-green");
+      profilePhoto.setAttribute("src", laserPhotoSrc);
+      document.body.classList.add("lawja-mode");
+      updateParticles(lawjaParticleColor, lawjaParticleSettings);
     };
 
     const restoreName = () => {
       nameHeading.innerHTML = originalNameHtml;
       nameHeading.classList.remove("hacker-green");
-      bindHoverTargets();
+      profilePhoto.setAttribute("src", originalPhotoSrc);
+      document.body.classList.remove("lawja-mode");
+      updateParticles(normalParticleColor, normalParticleSettings);
     };
 
-    const bindHoverTargets = () => {
-      const hoverTargets = nameHeading.querySelectorAll(".hover-name");
-      hoverTargets.forEach((target) => {
-        target.addEventListener("mouseenter", showHackerName);
+    const updateParticles = (color, settings) => {
+      if (!window.pJSDom || !window.pJSDom[0] || !window.pJSDom[0].pJS) {
+        return;
+      }
+      const particleEngine = window.pJSDom[0].pJS;
+      particleEngine.particles.color.value = color;
+      particleEngine.particles.line_linked.color = color;
+      particleEngine.particles.number.value = settings.count;
+      particleEngine.particles.move.speed = settings.speed;
+      particleEngine.particles.size.value = settings.size;
+      particleEngine.particles.opacity.value = settings.opacity;
+      particleEngine.particles.line_linked.opacity = settings.lineOpacity;
+      particleEngine.particles.line_linked.width = settings.lineWidth;
+      particleEngine.fn.particlesRefresh();
+    };
+
+    if (window.particlesJS) {
+      window.particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: normalParticleSettings.count,
+            density: { enable: true, value_area: 800 },
+          },
+          color: { value: normalParticleColor },
+          shape: { type: "circle" },
+          opacity: { value: normalParticleSettings.opacity, random: false },
+          size: { value: normalParticleSettings.size, random: true },
+          line_linked: {
+            enable: true,
+            distance: 140,
+            color: normalParticleColor,
+            opacity: normalParticleSettings.lineOpacity,
+            width: normalParticleSettings.lineWidth,
+          },
+          move: {
+            enable: true,
+            speed: normalParticleSettings.speed,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: false, mode: "push" },
+            resize: true,
+          },
+          modes: {
+            grab: { distance: 140, line_linked: { opacity: 0.6 } },
+          },
+        },
+        retina_detect: true,
       });
-    };
+    }
 
-    bindHoverTargets();
+    nameHeading.addEventListener("mouseenter", showHackerName);
     nameHeading.addEventListener("mouseleave", restoreName);
   </script>
 </html>
