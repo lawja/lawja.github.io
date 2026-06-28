@@ -84,28 +84,6 @@
         color: #7db4ff;
       }
 
-      .hacker-green {
-        color: #7db4ff;
-      }
-
-      .lawja-mode {
-        background: #000000;
-      }
-
-      .lawja-mode #site-name.hacker-green {
-        color: #39ff14;
-      }
-
-      .lawja-mode h2,
-      .lawja-mode .info,
-      .lawja-mode .info-title,
-      .lawja-mode .info a,
-      .lawja-mode .site-footer,
-      .lawja-mode .site-footer-link {
-        color: #ffffff;
-      }
-
-
       .accent-yellow {
         color: #f0cc00;
         font-weight: 700;
@@ -249,8 +227,8 @@
         <!-- RIGHT COLUMN: header + bullets -->
         <div>
           <h1 id="site-name">
-            <span class="name-underline hover-name">ja</span>ke
-            <span class="name-underline hover-name">law</span>rence
+            <span class="name-underline">ja</span>ke
+            <span class="name-underline">law</span>rence
           </h1>
           <h2>production engineer at Meta</h2>
           <div class="info">
@@ -316,13 +294,7 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     const currentYear = document.getElementById("current-year");
-    const nameHeading = document.getElementById("site-name");
-    const profilePhoto = document.getElementById("profile-photo");
-    const originalNameHtml = nameHeading.innerHTML;
-    const originalPhotoSrc = profilePhoto.getAttribute("src");
-    const laserPhotoSrc = "pfp_laser.jpg";
     const normalParticleColor = "#7db4ff";
-    const lawjaParticleColor = "#39ff14";
     const normalParticleSettings = {
       count: 65,
       speed: 1.8,
@@ -331,48 +303,8 @@
       lineOpacity: 0.25,
       lineWidth: 1,
     };
-    const lawjaParticleSettings = {
-      count: 110,
-      speed: 3.2,
-      size: 3.4,
-      opacity: 0.7,
-      lineOpacity: 0.5,
-      lineWidth: 1.4,
-    };
 
     currentYear.textContent = new Date().getFullYear();
-
-    const showHackerName = () => {
-      nameHeading.textContent = "lawja";
-      nameHeading.classList.add("hacker-green");
-      profilePhoto.setAttribute("src", laserPhotoSrc);
-      document.body.classList.add("lawja-mode");
-      updateParticles(lawjaParticleColor, lawjaParticleSettings);
-    };
-
-    const restoreName = () => {
-      nameHeading.innerHTML = originalNameHtml;
-      nameHeading.classList.remove("hacker-green");
-      profilePhoto.setAttribute("src", originalPhotoSrc);
-      document.body.classList.remove("lawja-mode");
-      updateParticles(normalParticleColor, normalParticleSettings);
-    };
-
-    const updateParticles = (color, settings) => {
-      if (!window.pJSDom || !window.pJSDom[0] || !window.pJSDom[0].pJS) {
-        return;
-      }
-      const particleEngine = window.pJSDom[0].pJS;
-      particleEngine.particles.color.value = color;
-      particleEngine.particles.line_linked.color = color;
-      particleEngine.particles.number.value = settings.count;
-      particleEngine.particles.move.speed = settings.speed;
-      particleEngine.particles.size.value = settings.size;
-      particleEngine.particles.opacity.value = settings.opacity;
-      particleEngine.particles.line_linked.opacity = settings.lineOpacity;
-      particleEngine.particles.line_linked.width = settings.lineWidth;
-      particleEngine.fn.particlesRefresh();
-    };
 
     if (window.particlesJS) {
       window.particlesJS("particles-js", {
@@ -416,8 +348,5 @@
         retina_detect: true,
       });
     }
-
-    nameHeading.addEventListener("mouseenter", showHackerName);
-    nameHeading.addEventListener("mouseleave", restoreName);
   </script>
 </html>
